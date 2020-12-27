@@ -1,13 +1,32 @@
 plugins {
-    id 'java-library'
-    id 'kotlin'
+    id 'com.android.library'
+    id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+android {
+    compileSdkVersion Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        buildConfigField("String", "BASE_URL", NetworkDependencies.BASE_URL)
+    }
+    buildTypes {
+        release {
+            minifyEnabled DefaultAppConfig.releaseMinifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -17,7 +36,10 @@ dependencies {
             AndroidArchDependencies.dagger,
             NetworkDependencies.retrofit,
             NetworkDependencies.retrofitGsonConverter,
-            NetworkDependencies.loggingInterceptor
+            NetworkDependencies.loggingInterceptor,
+
+            project(ProjectDependencies.domain),
+            project(ProjectDependencies.repository)
     )
 
     kapt(

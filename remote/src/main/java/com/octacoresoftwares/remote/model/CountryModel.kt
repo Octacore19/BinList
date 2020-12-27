@@ -1,6 +1,6 @@
-package com.octacoresoftwares.remote.model
+package com.octacoresoftwares.domain.model
 
-data class Country(
+data class CountryModel(
     val numeric: String? = null,
     val alpha: String? = null,
     val name: String? = null,

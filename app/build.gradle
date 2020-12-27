@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -42,7 +44,26 @@ dependencies {
             CoreAppDependencies.coreKtx,
             CoreAppDependencies.appCompat,
             CoreAppDependencies.mdc,
-            ViewDependencies.constraintLayout
+            CoreAppDependencies.lifecycle,
+            CoreAppDependencies.legacySupport,
+            KotlinCoreDependencies.coroutine,
+            KotlinCoreDependencies.runtime,
+            KotlinCoreDependencies.viewModel,
+            KotlinCoreDependencies.liveData,
+            AndroidArchDependencies.navFragKtx,
+            AndroidArchDependencies.navUiKtx,
+            AndroidArchDependencies.navDynamicFeatures,
+            AndroidArchDependencies.daggerAndroidSupport,
+            ViewDependencies.constraintLayout,
+
+            project(ProjectDependencies.repository),
+            project(ProjectDependencies.domain),
+            project(ProjectDependencies.remote)
+    )
+
+    kapt(
+            AndroidArchDependencies.daggerAndroidProcessor,
+            AndroidArchDependencies.daggerCompiler
     )
 
     testImplementation(

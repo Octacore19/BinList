@@ -8,6 +8,8 @@ object Versions {
     const val versionCode = 1
     const val versionName = "1.0"
     const val jvmTarget = "1.8"
+    const val lifecycle = "2.2.0"
+    const val legacySupport = "1.0.0"
     const val coreKtx = "1.3.2"
     const val appCompat = "1.2.0"
     const val mdc = "1.2.1"

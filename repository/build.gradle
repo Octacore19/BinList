@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+
+dependencies {
+    implementation(
+            CoreAppDependencies.kotlinStdLib,
+            KotlinCoreDependencies.coroutineCore,
+            AndroidArchDependencies.dagger,
+
+            project(ProjectDependencies.domain)
+    )
+
+    kapt(
+            AndroidArchDependencies.daggerCompiler
+    )
+}

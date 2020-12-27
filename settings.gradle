@@ -1,3 +1,5 @@
 include ':remote'
 include ':app'
+include ':domain'
+include ':repository'
 rootProject.name = "Bin List"

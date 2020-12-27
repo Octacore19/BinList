@@ -1,6 +1,6 @@
-package com.octacoresoftwares.remote
+package com.octacoresoftwares.domain.model
 
-data class Bank(
+data class BankModel(
     val name: String? = null,
     val url: String? = null,
     val phone: String? = null,
