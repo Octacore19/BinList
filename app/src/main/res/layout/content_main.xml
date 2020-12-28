@@ -271,15 +271,18 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/card_bank_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="monospace"
                     android:text='@{vm.cardDetails.bank.name ?? "?"}'
                     android:textAlignment="textEnd"
                     android:textColor='@{cardBankName.text.toString().contains("?") ? @color/grey : @color/purple_700}'
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/textView5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
                     tools:text="International Bank of the World"
                     tools:textColor="@color/purple_700" />
@@ -318,6 +321,8 @@
                     android:layout_height="48dp"
                     app:icons="@{vm.logoList}"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/card_bank_name"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:scheme="@{vm.cardDetails.scheme}"
                     tools:srcCompat="@drawable/ic_mastercard" />
