@@ -1,6 +1,7 @@
 package com.octacoresoftwares.remote.di
 
 import com.octacoresoftwares.remote.BuildConfig
+import com.octacoresoftwares.remote.service.BinService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -16,4 +17,8 @@ class RetrofitModule {
         .addConverterFactory(converter)
         .client(client)
         .build()
+
+    @Provides
+    fun provideBinService(retrofit: Retrofit): BinService =
+        retrofit.create(BinService::class.java)
 }

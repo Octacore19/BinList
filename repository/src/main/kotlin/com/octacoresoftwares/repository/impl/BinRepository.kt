@@ -12,10 +12,10 @@ import javax.inject.Inject
 
 class BinRepository @Inject constructor(private val service: IBinService): IBinRepository {
 
-    override suspend fun fetchCardRepository(cardNumber: String): Flow<BaseResponse<BinResponse>> =
-        flow {
+    override suspend fun fetchCardRepository(cardNumber: String): Flow<BaseResponse<BinResponse>> {
+        return flow {
             service.fetchCardDetails(cardNumber).collect {
-                emit(
+                this.emit(
                     BaseResponse(
                         success = it.success,
                         hasError = it.hasError,
@@ -25,4 +25,5 @@ class BinRepository @Inject constructor(private val service: IBinService): IBinR
                 )
             }
         }
+    }
 }

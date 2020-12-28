@@ -17,6 +17,7 @@ object Versions {
     const val jUnitAndroidTest = "1.1.2"
     const val espresso = "3.3.0"
     const val constraintLayout = "2.0.4"
+    const val pinView = "1.4.4"
     const val work = "2.4.0"
     const val dagger = "2.27"
     const val room = "2.3.0-alpha02"
@@ -25,6 +26,7 @@ object Versions {
     const val okHttp = "3.12.0"
     const val coroutine = "1.4.2"
     const val coroutineAndroid = "1.3.9"
+    const val coroutineLifecycle = "2.3.0-beta01"
     const val glide = "4.11.0"
     const val timber = "4.7.1"
 }

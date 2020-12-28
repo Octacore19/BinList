@@ -55,6 +55,10 @@ dependencies {
             AndroidArchDependencies.navDynamicFeatures,
             AndroidArchDependencies.daggerAndroidSupport,
             ViewDependencies.constraintLayout,
+            ViewDependencies.pinView,
+            NetworkDependencies.retrofit,
+            NetworkDependencies.retrofitGsonConverter,
+            NetworkDependencies.loggingInterceptor,
 
             project(ProjectDependencies.repository),
             project(ProjectDependencies.domain),

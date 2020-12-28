@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface IBinRepository {
     suspend fun fetchCardRepository(cardNumber: String): Flow<BaseResponse<BinResponse>>
+//    suspend fun fetchCardRepository(cardNumber: String): Flow<Int>
 }

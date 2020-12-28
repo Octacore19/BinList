@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bin List</string>
+    <string name="enter_the_first_6_9_digits_of_the_card_number">Enter the first 6 - 9 digits of the card number</string>
 </resources>
