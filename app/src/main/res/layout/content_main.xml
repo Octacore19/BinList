@@ -319,7 +319,8 @@
                     app:icons="@{vm.logoList}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:scheme="@{vm.cardDetails.scheme}" />
+                    app:scheme="@{vm.cardDetails.scheme}"
+                    tools:srcCompat="@drawable/ic_mastercard" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

@@ -41,7 +41,7 @@ fun MaterialTextView.setCountry(country: Country?) {
 fun ViewGroup.makeSnackBar(text: String?, actionText: String?, listener: View.OnClickListener?) {
     text?.let {
         if (it.isNotEmpty()) {
-            if (actionText != null && actionText.isEmpty()) {
+            if (actionText != null && actionText == "") {
                 Snackbar.make(this, it, Snackbar.LENGTH_LONG).apply {
                     val layout = this.view.layoutParams as CoordinatorLayout.LayoutParams
                     layout.gravity = Gravity.TOP
@@ -60,16 +60,6 @@ fun ViewGroup.makeSnackBar(text: String?, actionText: String?, listener: View.On
                     show()
                 }
             }
-            /*Snackbar.make(this, it, Snackbar.LENGTH_INDEFINITE).apply {
-                if (actionText != null && listener != null) {
-                    setAction(actionText, listener)
-                    setActionTextColor(ContextCompat.getColor(context, R.color.teal_200))
-                }
-                val layout = this.view.layoutParams as CoordinatorLayout.LayoutParams
-                layout.gravity = Gravity.TOP
-                this.view.layoutParams = layout
-                show()
-            }*/
         }
     }
 }

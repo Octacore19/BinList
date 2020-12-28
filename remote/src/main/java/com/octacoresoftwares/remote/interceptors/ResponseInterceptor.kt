@@ -1,5 +1,6 @@
 package com.octacoresoftwares.remote.interceptors
 
+import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.ResponseBody
@@ -10,12 +11,13 @@ import javax.inject.Inject
 class ResponseInterceptor @Inject constructor(): Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
+
         val response = chain.proceed(chain.request())
         val body = response.body()!!.string()
         val responseBody = try {
             JSONObject(body)
         } catch (e: Exception) {
-            JSONArray(body)
+            e
         }
 
         var newResponseBody: Any? = null
@@ -27,9 +29,8 @@ class ResponseInterceptor @Inject constructor(): Interceptor {
                             "hasErrors"
                         ) as Boolean
                     ) {
-                        /**
-                         * An error from the server
-                         */
+                        //An error from the server
+
                         val errorArray = responseBody.getJSONArray("errors")
                         // get the error from the object
                         val errorMessage = try {
@@ -68,9 +69,9 @@ class ResponseInterceptor @Inject constructor(): Interceptor {
                 val mainObject = JSONObject(responseBody[0].toString())
                 newResponseBody = when {
                     mainObject.has("errors") -> {
-                        /**
-                         * An error from the server
-                         */
+
+                        //An error from the server
+
                         val errorArray = mainObject.getJSONArray("errors")
                         val errorMessage = JSONObject(errorArray[0].toString()).getString("message")
                         JSONObject().apply {
@@ -84,6 +85,17 @@ class ResponseInterceptor @Inject constructor(): Interceptor {
                         put("success", true)
                         put("hasError", false)
                     }
+                }
+                response.newBuilder().body(
+                    ResponseBody.create(response.body()!!.contentType(), newResponseBody.toString())
+                ).build()
+            }
+            is Exception -> {
+                val message = responseBody.localizedMessage
+                newResponseBody = JSONObject().apply {
+                    put("message", message)
+                    put("success", false)
+                    put("hasError", true)
                 }
                 response.newBuilder().body(
                     ResponseBody.create(response.body()!!.contentType(), newResponseBody.toString())

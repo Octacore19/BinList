@@ -1,7 +1,6 @@
 package com.octacoresoftwares.remote.impl
 
 import com.octacoresoftwares.remote.mappers.toRepo
-import com.octacoresoftwares.remote.utils.performError
 import com.octacoresoftwares.remote.service.BinService
 import com.octacoresoftwares.repository.model.BaseRepositoryResponse
 import com.octacoresoftwares.repository.model.BinResponseEntity
@@ -15,13 +14,22 @@ class BinRemoteService @Inject constructor(private val service: BinService) : IB
 
     override suspend fun fetchCardDetails(cardNumber: String): Flow<BaseRepositoryResponse<BinResponseEntity>> {
         return flow {
-            service.fetchCardDetails(cardNumber).performError().collect {
+            try {
+                service.fetchCardDetails(cardNumber).let {
+                    emit(
+                        BaseRepositoryResponse(
+                            success = it.success,
+                            hasError = it.hasError,
+                            data = it.data?.toRepo()
+                        )
+                    )
+                }
+            } catch (e: Exception) {
                 emit(
-                    BaseRepositoryResponse(
-                        success = it.success,
-                        hasError = it.hasError,
-                        message = it.message,
-                        data = it.data?.toRepo()
+                    BaseRepositoryResponse<BinResponseEntity>(
+                        success = false,
+                        hasError = true,
+                        message = e.localizedMessage
                     )
                 )
             }

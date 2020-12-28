@@ -35,7 +35,7 @@ class MainViewModel @Inject constructor(private val repo: IBinRepository) : Obse
         set(value) {
             field = value
             notifyPropertyChanged(BR.cardNumber)
-            if (field.isNotEmpty() && field.count() > 4) {
+            if (field.isNotEmpty() && field.count() > 1) {
                 if (isInternetAvailable) {
                     fetchCardDetails(field)
                 }
@@ -50,11 +50,6 @@ class MainViewModel @Inject constructor(private val repo: IBinRepository) : Obse
         repo.fetchCardRepository(cardNumber).collect {
             if (it.success) {
                 _cardDetails.value = it.data!!
-            }
-
-            if (it.hasError) {
-                showSnackBar = "An error has occurred"
-                snackBarActionText = ""
             }
         }
     }
