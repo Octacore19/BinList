@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="image_array">
+        <item>@drawable/ic_mastercard</item>
+        <item>@drawable/ic_visa</item>
+    </integer-array>
+</resources>

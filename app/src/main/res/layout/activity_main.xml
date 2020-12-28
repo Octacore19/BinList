@@ -7,17 +7,25 @@
         <variable
             name="vm"
             type="com.octacoresoftwares.binlist.viewmodels.MainViewModel" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/grey"
+        app:snackBarActionText="@{vm.snackBarActionText}"
+        app:snackBarListener="@{listener}"
+        app:snackBarText="@{vm.showSnackBar}"
         tools:context=".ui.MainActivity">
 
         <include
             android:id="@+id/content"
             layout="@layout/content_main"
-            app:vm="@{vm}"/>
+            app:vm="@{vm}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

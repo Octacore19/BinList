@@ -16,8 +16,19 @@ class MainViewModel @Inject constructor(private val repo: IBinRepository) : Obse
     private val _cardDetails = MutableLiveData<BinResponse>()
     val cardDetails: LiveData<BinResponse> = _cardDetails
 
-    private val _cardVisibility = MutableLiveData(false)
-    val cardVisibility: LiveData<Boolean> = _cardVisibility
+    var isInternetAvailable = false
+
+    var logoList: List<Int>? = null
+
+    @get:Bindable
+    var snackBarActionText = ""
+
+    @get:Bindable
+    var showSnackBar = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.showSnackBar)
+        }
 
     @get:Bindable
     var cardNumber = ""
@@ -25,21 +36,25 @@ class MainViewModel @Inject constructor(private val repo: IBinRepository) : Obse
             field = value
             notifyPropertyChanged(BR.cardNumber)
             if (field.isNotEmpty() && field.count() > 4) {
-                fetchCardDetails(field)
-            } else {
-                _cardVisibility.value = false
+                if (isInternetAvailable) {
+                    fetchCardDetails(field)
+                }
+                else {
+                    showSnackBar = "No internet connection"
+                    snackBarActionText = "Settings"
+                }
             }
         }
 
     private fun fetchCardDetails(cardNumber: String) = viewModelScope.launch {
         repo.fetchCardRepository(cardNumber).collect {
             if (it.success) {
-                _cardVisibility.value = it.success
                 _cardDetails.value = it.data!!
             }
 
             if (it.hasError) {
-                _cardVisibility.value = !it.hasError
+                showSnackBar = "An error has occurred"
+                snackBarActionText = ""
             }
         }
     }
