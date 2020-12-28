@@ -1,6 +1,6 @@
-package com.octacoresoftwares.repository.model
+package com.octacoresoftwares.remote.model
 
-data class BaseRepositoryResponse <T>(
+data class BaseRemoteResponse<T>(
     val success: Boolean,
     val hasError: Boolean,
     val message: String? = null,

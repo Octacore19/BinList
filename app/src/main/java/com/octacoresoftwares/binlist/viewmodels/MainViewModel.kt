@@ -16,8 +16,8 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(private val repo: IBinRepository) : ObservableViewModel() {
 
-    private var _cardDetails = MutableLiveData<BaseResponse<BinResponse>>()
-    val cardDetails: LiveData<BinResponse> = _cardDetails
+    /*private var _cardDetails = MutableLiveData<BaseResponse<BinResponse>>()
+    val cardDetails: LiveData<BaseResponse<BinResponse>> = _cardDetails*/
 
     @get:Bindable
     var cardNumber = ""
@@ -30,10 +30,8 @@ class MainViewModel @Inject constructor(private val repo: IBinRepository) : Obse
         }
 
     private fun fetchCardDetails(cardNumber: String) = viewModelScope.launch {
-        _cardDetails = repo.fetchCardRepository(cardNumber).asLiveData()
-        Log.i("Model", "${_cardDetails.value?.data?.bank}")
-        /*repo.fetchCardRepository(cardNumber).collect{
+        repo.fetchCardRepository(cardNumber).collect{
             Log.i("Model", "$it")
-        }*/
+        }
     }
 }

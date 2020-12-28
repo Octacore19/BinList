@@ -1,11 +1,11 @@
-package com.octacoresoftwares.domain.model
+package com.octacoresoftwares.remote.model
 
 data class BinResponseModel(
-    val number: NumberModel? = null,
-    val scheme: String? = null,
-    val type: String? = null,
-    val brand: String? = null,
-    val prepaid: Boolean? = null,
-    val country: CountryModel? = null,
-    val bank: BankModel? = null
+    val number: NumberModel?,
+    val scheme: String?,
+    val type: String?,
+    val brand: String?,
+    val prepaid: Boolean?,
+    val country: CountryModel?,
+    val bank: BankModel?
 )

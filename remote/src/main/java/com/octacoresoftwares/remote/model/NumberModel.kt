@@ -1,6 +1,6 @@
-package com.octacoresoftwares.domain.model
+package com.octacoresoftwares.remote.model
 
 data class NumberModel(
-    val length: Int? = null,
-    val luhn: Boolean? = null
+    val length: Int?,
+    val luhn: Boolean?
 )

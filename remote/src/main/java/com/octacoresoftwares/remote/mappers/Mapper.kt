@@ -1,9 +1,9 @@
 package com.octacoresoftwares.remote.mappers
 
-import com.octacoresoftwares.domain.model.BankModel
-import com.octacoresoftwares.domain.model.BinResponseModel
-import com.octacoresoftwares.domain.model.CountryModel
-import com.octacoresoftwares.domain.model.NumberModel
+import com.octacoresoftwares.remote.model.BankModel
+import com.octacoresoftwares.remote.model.BinResponseModel
+import com.octacoresoftwares.remote.model.CountryModel
+import com.octacoresoftwares.remote.model.NumberModel
 import com.octacoresoftwares.repository.model.BankEntity
 import com.octacoresoftwares.repository.model.BinResponseEntity
 import com.octacoresoftwares.repository.model.CountryEntity
@@ -12,35 +12,35 @@ import com.octacoresoftwares.repository.model.NumberEntity
 fun BinResponseModel.toRepo(): BinResponseEntity =
     BinResponseEntity(
         number = number.toRepo(),
-        scheme = scheme ?: "N/A",
-        type = type ?: "N/A",
-        brand = brand ?: "N/A",
-        prepaid = prepaid ?: false,
+        scheme = scheme,
+        type = type,
+        brand = brand,
+        prepaid = prepaid,
         country = country.toRepo(),
         bank = bank.toRepo()
     )
 
 fun NumberModel?.toRepo(): NumberEntity =
     NumberEntity(
-        length = this?.length ?: 0,
-        luhn = this?.luhn ?: false
+        length = this?.length,
+        luhn = this?.luhn
     )
 
 fun CountryModel?.toRepo(): CountryEntity =
     CountryEntity(
-        numeric = this?.numeric ?: "N/A",
-        alpha = this?.alpha ?: "N/A",
-        name = this?.name ?: "N/A",
-        emoji = this?.emoji ?: "N/A",
-        currency = this?.currency ?: "N/A",
-        latitude = this?.latitude ?: 0.0,
-        longitude = this?.longitude ?: 0.0
+        numeric = this?.numeric,
+        alpha = this?.alpha,
+        name = this?.name,
+        emoji = this?.emoji,
+        currency = this?.currency,
+        latitude = this?.latitude,
+        longitude = this?.longitude
     )
 
 fun BankModel?.toRepo(): BankEntity =
     BankEntity(
-        name = this?.name ?: "N/A",
-        url = this?.url ?: "N/A",
-        phone = this?.phone ?: "N/A",
-        city = this?.city ?: "N/A"
+        name = this?.name,
+        url = this?.url,
+        phone = this?.phone,
+        city = this?.city
     )

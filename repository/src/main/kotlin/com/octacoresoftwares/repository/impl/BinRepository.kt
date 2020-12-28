@@ -19,7 +19,7 @@ class BinRepository @Inject constructor(private val service: IBinService): IBinR
                     BaseResponse(
                         success = it.success,
                         hasError = it.hasError,
-                        exceptions = it.exceptions,
+                        message = it.message,
                         data = it.data?.toResponse()
                     )
                 )

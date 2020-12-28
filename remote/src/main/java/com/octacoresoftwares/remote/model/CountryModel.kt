@@ -1,11 +1,14 @@
-package com.octacoresoftwares.domain.model
+package com.octacoresoftwares.remote.model
+
+import com.google.gson.annotations.SerializedName
 
 data class CountryModel(
-    val numeric: String? = null,
-    val alpha: String? = null,
-    val name: String? = null,
-    val emoji: String? = null,
-    val currency: String? = null,
-    val latitude: Double? = null,
-    val longitude: Double? = null
+    val numeric: String?,
+    @field:SerializedName("alpha2")
+    val alpha: String?,
+    val name: String?,
+    val emoji: String?,
+    val currency: String?,
+    val latitude: Double?,
+    val longitude: Double?
 )

@@ -11,13 +11,13 @@ import com.octacoresoftwares.repository.model.NumberEntity
 
 fun BinResponseEntity.toResponse(): BinResponse =
     BinResponse(
-        number = number.toNumber(),
-        scheme = scheme,
-        type = type,
+        number = this.number?.toNumber(),
+        scheme = this.scheme,
+        type = this.type,
         brand = brand,
         prepaid = prepaid,
-        country = country.toCountry(),
-        bank = bank.toBank()
+        country = country?.toCountry(),
+        bank = bank?.toBank()
     )
 
 fun NumberEntity.toNumber(): Number =
