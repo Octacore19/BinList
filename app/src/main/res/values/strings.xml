@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Bin List</string>
     <string name="enter_the_first_6_9_digits_of_the_card_number">Enter the first 6 - 9 digits of the card number</string>
+    <string name="scheme_network">SCHEME</string>
+    <string name="type">TYPE</string>
+    <string name="credit">Credit</string>
+    <string name="country">COUNTRY</string>
+    <string name="card_number">CARD NUMBER</string>
+    <string name="prepaid">PREPAID</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="debit">Debit</string>
+    <string name="luhn">LUHN</string>
+    <string name="length">LENGTH</string>
+    <string name="bank">BANK</string>
 </resources>
